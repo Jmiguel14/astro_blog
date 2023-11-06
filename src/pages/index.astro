@@ -1,8 +1,9 @@
 ---
 import '../styles/global.css';
 
-import Header from '../components/header.astro';
-import Footer from '../components/footer.astro';
+import BaseLayout from '../layouts/base-layout.astro';
+import Greeting from '../components/greeting';
+const pageTitle = "Home Page";
 ---
 
 <html lang="en">
@@ -14,11 +15,10 @@ import Footer from '../components/footer.astro';
 		<title>Astro</title>
 	</head>
 	<body>
-		<Header />
-		
-		<h1>My Astro website</h1>
-
-		<Footer />
+		<BaseLayout pageTitle={pageTitle}>
+			<h1>My Astro website</h1>
+			<Greeting client:load messages={["Hi", "Hello", "Howdy", "Hey there"]} />
+		</BaseLayout>
 	</body>
 	<script>
 		import "../scripts/menu.js";
